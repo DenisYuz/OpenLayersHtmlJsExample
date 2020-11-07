@@ -19,7 +19,24 @@
     <h2>My map</h2>
     <div id="map" class="map"></div>
     <script type="text/javascript">
-        var telAvivFeature = new ol.Feature({ geometry: new ol.geom.Point(ol.proj.fromLonLat([35, 32])) });
+        var telAvivFeature = new ol.Feature({
+            geometry: new ol.geom.Point(ol.proj.fromLonLat([35, 32])),
+        });
+        telAvivFeature.setStyle(new ol.style.Style({
+            // image: new ol.style.Icon({
+            //     color: '#BADA55',
+            //     // crossOrigin: 'anonymous',
+            //     // For Internet Explorer 11
+            //     imgSize: [20, 20],
+            //     src: './assets/images/location.svg',
+            // }),
+            image: new ol.style.RegularShape({
+                fill: new ol.style.Fill({ color: '#FF0000' }),
+                points: 4,
+                radius: 10,
+                angle: 0
+            })
+        }))
         var vectorLayer1 = new ol.layer.Tile({
             source: new ol.source.OSM()
         });
@@ -37,7 +54,7 @@
             ],
             view: new ol.View({
                 center: ol.proj.fromLonLat([35, 32]),
-                zoom: 4
+                zoom: 10
             })
         })
     </script>
